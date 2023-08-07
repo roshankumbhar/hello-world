@@ -1,0 +1,18 @@
+pipeline{
+  agent any
+  parameters{
+    string(defaultValue: " ", description: "Deployment Name", name: "deploymentName")
+    choice(choices: ["Test", "Replica", "Pre-pod", "Prod"], description: "Deployment Env", name: "deploymentEnv")
+    booleanParam(defaultValue: false, description: "Confirm Deployment", name: "confirmDeploy")
+  }
+  stages{
+    stage("Test"){
+      steps{
+        echo "string set to be ${deploymentName}\n"
+        echo "choice set to be ${deploymentEnv}\n"
+        echo "booleanParam set to be ${confirmDeploy}"         
+        }
+      }
+    }
+  }
+}
